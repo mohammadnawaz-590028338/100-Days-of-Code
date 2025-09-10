@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    int num, digit, product = 1;
+    int hasOdd = 0; // To check if there's any odd digit
+
+    // Input a number
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Loop to extract digits
+    while (num > 0) {
+        digit = num % 10;  // Get last digit
+
+        // Check if the digit is odd
+        if (digit % 2 != 0) {
+            product *= digit;
+            hasOdd = 1; // Mark that at least one odd digit exists
+        }
+
+        num = num / 10; // Remove the last digit
+    }
+
+    // If no odd digit found, product should be 0
+    if (hasOdd)
+        printf("Product of odd digits = %d\n", product);
+    else
+        printf("No odd digits found! Product = 0\n");
+
+    return 0;
+}
