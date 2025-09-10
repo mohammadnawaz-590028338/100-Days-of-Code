@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    long int binary, onesComplement = 0, place = 1;
+    int digit;
+
+    // Input binary number
+    printf("Enter a binary number: ");
+    scanf("%ld", &binary);
+
+    // Process each digit
+    while (binary > 0) {
+        digit = binary % 10;  // Get last digit
+
+        // Flip the bit: 0 -> 1, 1 -> 0
+        if (digit == 0)
+            onesComplement += 1 * place;
+        else
+            onesComplement += 0 * place;
+
+        place *= 10;  // Move to next place value
+        binary /= 10; // Remove last digit
+    }
+
+    // Display result
+    printf("1's Complement = %ld\n", onesComplement);
+
+    return 0;
+}
