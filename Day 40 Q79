@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m); // rows and columns
+
+    int a[n][m];
+
+    // Input matrix
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    // Diagonal traversal
+    for(int d = 0; d < n + m - 1; d++) {
+        if(d % 2 == 0) {
+            // Traverse up direction
+            int i = (d < n) ? d : n - 1;
+            int j = d - i;
+            while(i >= 0 && j < m) {
+                printf("%d ", a[i][j]);
+                i--;
+                j++;
+            }
+        } else {
+            // Traverse down direction
+            int j = (d < m) ? d : m - 1;
+            int i = d - j;
+            while(j >= 0 && i < n) {
+                printf("%d ", a[i][j]);
+                j--;
+                i++;
+            }
+        }
+    }
+
+    return 0;
+}
